@@ -96,12 +96,7 @@ app.use(function (req, res, next) {
 
 // START WEBSERVER
 // =========================================================
-  var server = app.listen(process.env.PORT || theport, function(){
-    var port = server.address().port;
-    app.set('port', port);
-    console.log("App now running on port", port);
-
-  });
+  app.listen(process.env.PORT || theport);
 
 
   process.on('uncaughtException', function(err) {

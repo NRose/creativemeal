@@ -14,6 +14,10 @@ module.exports.createUser = function (req, res, next) {
   	req.checkBody('password', 'Password must be between 6 and 32 characters.').notEmpty(); 
   	req.checkBody('email', 'No valid Email given.').isEmail();
 */
+    if(req.body.username ==""){
+      console.log("not username given?!");
+    }
+    console.log(req.body);
   	var errors = req.validationErrors();
   	if(errors) {
     	return next(new Response.error(400, 'Validation errors occured', errors));
