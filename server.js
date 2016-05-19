@@ -51,8 +51,8 @@ app.use(Validator({
       message: msg,
       value: value
     };
-  },
-  // Custom validation rules
+  }
+  /*// Custom validation rules
   customValidators: {
     isNumber: function(value) {
       return !isNaN(parseFloat(value)) && isFinite(value);
@@ -60,7 +60,7 @@ app.use(Validator({
     validPrice: function(value) {
       return !isNaN(parseFloat(value)) && isFinite(value) && value >= 0;
     }
-  }
+  }*/
 }));
 
 

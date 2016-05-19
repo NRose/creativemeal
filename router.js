@@ -7,6 +7,7 @@ var QuestController    = require('./controllers/QuestController');
 
 router.route('/*')
   .trace(function(req, res, next) {
+    console.log("Request: ", req.body);
     res.send(Response.successfull(200, req.body, null, null));
   })
   .options(function(req, res, next) {
