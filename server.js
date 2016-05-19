@@ -84,6 +84,8 @@ app.use(function (err, req, res, next) {
 });
 
 app.use(function (req, res, next) {
+   console.log(res.json(req.response));
+  console.log("Hier!");
     if(req.response !== undefined) {
       res.json(req.response);
     }
@@ -96,7 +98,12 @@ app.use(function (req, res, next) {
 
 // START WEBSERVER
 // =========================================================
-  app.listen(process.env.PORT || theport);
+  var server = app.listen(process.env.PORT || theport, function(){
+    var port = server.address().port;
+    app.set('port', port);
+    console.log("App now running on port", port);
+
+  });
 
 
   process.on('uncaughtException', function(err) {
