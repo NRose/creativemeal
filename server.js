@@ -10,7 +10,7 @@ var http         = require('http');
 global.__coreDir = __dirname+"/";
 global.__port    = 3000;
 
-mongoose.connect('mongodb://localhost/creativeMeal');
+mongoose.connect('mongodb://heroku_885z4v5v:iq4dl9nkrlvctetpbr393h1h32@ds025742.mlab.com:25742/heroku_885z4v5v');
 // EXPRESS SETUP
 // =========================================================
 var app = express();
