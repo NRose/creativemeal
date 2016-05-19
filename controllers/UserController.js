@@ -8,6 +8,8 @@ var Promise = require('bluebird');
 // Called when: 'POST /users HTTP/1.1'
 module.exports.createUser = function (req, res, next) {
 
+  console.log("Ich bin hier!!");
+
 	req.checkBody('username', 'Username must be between 4 and 16 characters.').notEmpty();
   	req.checkBody('password', 'Password must be between 6 and 32 characters.').notEmpty(); 
   	req.checkBody('email', 'No valid Email given.').isEmail();
@@ -41,8 +43,10 @@ module.exports.createUser = function (req, res, next) {
 // Called when: 'GET /users HTTP/1.1'
 module.exports.getAllUser = function(req, res, next){
 	User.find({}, function(err, users) {
-        if (err) 
-		 	return next(new Response.error(err.statusCode));
+      if (err) {
+        console.log("ERROR!!");
+		 	  return next(new Response.error(err.statusCode));
+     }
 
 		req.response = new Response.ok(users);
   		return next();	

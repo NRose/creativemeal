@@ -5,17 +5,32 @@ var bodyParser   = require('body-parser');
 var Validator    = require('express-validator');
 var Response     = require('./helper/responseHelper');
 var mongoose = require('mongoose');
+var mongodb = require("mongodb");
 var http         = require('http');
 
 global.__coreDir = __dirname+"/";
-global.__port    = 3000;
+//global.__port    = 3000;
 
-mongoose.connect('mongodb://heroku_885z4v5v:iq4dl9nkrlvctetpbr393h1h32@ds025742.mlab.com:25742/heroku_885z4v5v');
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://heroku_885z4v5v:iq4dl9nkrlvctetpbr393h1h32@ds025742.mlab.com:25742/heroku_885z4v5v';
+
+var theport = process.env.PORT || 5000;
+
+mongoose.connect(uristring, function(err, res){
+  if (err) {
+      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+      } else {
+      console.log ('Succeeded connected to: ' + uristring);
+      }
+});
+
+
 // EXPRESS SETUP
 // =========================================================
 var app = express();
 
-app.set('port', __port);
 app.disable('x-powered-by');
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -81,14 +96,20 @@ app.use(function (req, res, next) {
 
 // START WEBSERVER
 // =========================================================
-app.listen(__port);
+  var server = app.listen(process.env.PORT || theport, function(){
+    var port = server.address().port;
+    app.set('port', port);
+    console.log("App now running on port", port);
 
-process.on('uncaughtException', function(err) {
-  if(err.code === "EADDRINUSE") {
-    console.log("It seems that the PORT "+__port+" is already in use by another application.");
-    process.exit(0);
-  }
-  else {
-    console.log("An uncaught Exception occured: "+err.toString());
-  }
-});
+  });
+
+
+  process.on('uncaughtException', function(err) {
+    if(err.code === "EADDRINUSE") {
+      console.log("It seems that the PORT "+port+" is already in use by another application.");
+      process.exit(0);
+    }
+    else {
+      console.log("An uncaught Exception occured: "+err.toString());
+    }
+  });
