@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 db.on('error', console.error);
 db.once('open', function() {
- console.log("DB connected!");
+ 
  return null;
 });
 
@@ -35,6 +35,6 @@ db.once('open', function() {
     deleted: { type: Boolean, default: '' }
   });
 
- var User = mongoose.model('User', UserSchema);
+ var User = mongoose.model('users', UserSchema);
 
   module.exports.User = User; 

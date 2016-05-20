@@ -84,7 +84,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.use(function (req, res, next) {
-   console.log(res.json(req.response));
+   //console.log(req.response);
   console.log("Hier!");
     if(req.response !== undefined) {
       res.json(req.response);

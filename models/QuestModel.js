@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 db.on('error', console.error);
 db.once('open', function() {
- console.log("DB connected!");
+ 
  return null;
 });
 
@@ -23,6 +23,6 @@ db.once('open', function() {
     deleted: { type: Boolean, default: '' }
   });
 
- var Quest = mongoose.model('Quest', QuestSchema);
+ var Quest = mongoose.model('quests', QuestSchema);
 
   module.exports.Quest = Quest; 
