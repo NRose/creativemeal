@@ -85,7 +85,7 @@ app.use(function (err, req, res, next) {
 
 app.use(function (req, res, next) {
    //console.log(req.response);
-  console.log("Hier!");
+  console.log("Hier sollte etwas passieren!");
     if(req.response !== undefined) {
       res.json(req.response);
     }

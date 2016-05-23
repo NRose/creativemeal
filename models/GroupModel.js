@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 
 db.on('error', console.error);
 db.once('open', function() {
+	console.log("Group connected!");
  return null;
 });
 //ggf. Passwort
