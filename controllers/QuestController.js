@@ -10,7 +10,7 @@ module.exports.createQuest = function (req, res, next) {
 
 	req.checkBody('name', 'Username must be between 4 and 16 characters.').notEmpty();
   req.checkBody('description', 'Password must be between 6 and 32 characters.').notEmpty(); 
-  req.checkBody('points', 'No valid Email given.').isEmail();
+  req.checkBody('points', 'No Points given.').notEmpty();
 
   	var errors = req.validationErrors();
   	if(errors) {
