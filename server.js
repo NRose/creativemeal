@@ -74,6 +74,7 @@ app.use('/', routes);
 // =========================================================
 app.use(function (err, req, res, next) {
   if(err) {
+    console.log(err.code);
     res.status(err.code || 500);
     res.send(err);
   }
@@ -84,7 +85,6 @@ app.use(function (err, req, res, next) {
 });
 
 app.use(function (req, res, next) {
-    console.log("Testlog: ", req.response);
     if(req.response !== undefined) {
       res.json(req.response);
     }
