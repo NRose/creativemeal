@@ -10,8 +10,8 @@ module.exports.createQuest = function (req, res, next) {
 
   console.log("HIIIIIIIIII23432!");
 	
-  req.checkBody('name', 'Name must be a nice one.').notEmpty();
-  req.checkBody('description', 'Description should be impressive.').notEmpty(); 
+  //req.checkBody('name', 'Name must be a nice one.').notEmpty();
+  //req.checkBody('description', 'Description should be impressive.').notEmpty(); 
   //req.checkBody('points', 'No Points given.').isInt();
 
   	var errors = req.validationErrors();
@@ -20,7 +20,6 @@ module.exports.createQuest = function (req, res, next) {
   	}
   	else {
     	var body = req.body;
-    	console.log("Body: ", body);
     	var quest = new Quest({
     		name: body.name,
     		description: body.description,
@@ -34,14 +33,15 @@ module.exports.createQuest = function (req, res, next) {
         },
     		deleted: false
     	});
-
+      console.log("Body: ", quest);
+    /*  
     	quest.save(function(err) {
   			if (err) 
   				return next(new Response.error(err.statusCode));
 
   			 req.response = new Response.ok(quest);
   			 return next();		
-	});
+	}); */
   } 
 };
 
