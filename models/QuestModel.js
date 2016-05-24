@@ -23,6 +23,6 @@ db.once('open', function() {
     deleted: { type: Boolean, default: '' }
   });
 
- var Quest = mongoose.model('quests', QuestSchema);
+ var Quest = mongoose.model('Quest', QuestSchema);
 
   module.exports.Quest = Quest; 

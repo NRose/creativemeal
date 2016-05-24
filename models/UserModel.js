@@ -21,6 +21,11 @@ db.once('open', function() {
       hotpot: { type: Boolean, default: true },
       poultry: { type: Boolean, default: true }
     },
+    quests: [{
+      type: mongoose.Schema.Types.ObjectId,
+      amount: { type: Number, default: 0 }, 
+      ref: "Quest"
+    }],
     achievements: [{
       type: mongoose.Schema.Types.ObjectId,
       amount: { type: Number, default: 0 }, 
@@ -35,6 +40,6 @@ db.once('open', function() {
     deleted: { type: Boolean, default: '' }
   });
 
- var User = mongoose.model('users', UserSchema);
+ var User = mongoose.model('User', UserSchema);
 
   module.exports.User = User; 

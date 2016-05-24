@@ -1,14 +1,13 @@
 var mongoose = require('mongoose');
 var Validator   = require('express-validator');
 var User     = require('../models/UserModel').User;
+var Quest = require('../models/QuestModel').Quest;
 var Response    = require('../helper/responseHelper');
 var Promise = require('bluebird');
 
 
 // Called when: 'POST /users HTTP/1.1'
 module.exports.createUser = function (req, res, next) {
-
-  console.log("Ich bin hier!!");
   
 	req.checkBody('username', 'Username must be between 4 and 16 characters.').notEmpty();
   req.checkBody('password', 'Password must be between 6 and 32 characters.').notEmpty(); 
@@ -31,13 +30,23 @@ module.exports.createUser = function (req, res, next) {
     		deleted: false
     	});
     	console.log(user);
-    	user.save(function(err) {
+
+      //get Quests for new User
+      Quest.find({}, function(err, quests){
+        if (err) 
+          return next(new Response.error(err.statusCode));
+
+        var questAmount = Quest.keys(quests).length;
+        console.log("Anzahl: ", questAmount);
+      });
+
+      user.save(function(err) {
   			if (err) 
   				return next(new Response.error(err.statusCode));
 
   			 req.response = new Response.ok(user);
   			 return next();		
-	});
+      });
   }
 };
 

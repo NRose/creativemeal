@@ -32,12 +32,12 @@ module.exports.createQuest = function (req, res, next) {
         },
     		deleted: false
     	});
-    	console.log(user);
-    	user.save(function(err) {
+
+    	quest.save(function(err) {
   			if (err) 
   				return next(new Response.error(err.statusCode));
 
-  			 req.response = new Response.ok(user);
+  			 req.response = new Response.ok(quest);
   			 return next();		
 	});
   }
@@ -45,11 +45,11 @@ module.exports.createQuest = function (req, res, next) {
 
 // Called when: 'GET /quests HTTP/1.1'
 module.exports.getAllQuests = function(req, res, next){
-	Quest.find({}, function(err, quest) {
-        if (err) 
-		 	return next(new Response.error(err.statusCode));
+	Quest.find({}, function(err, quests) {
+    if (err) 
+		  return next(new Response.error(err.statusCode));
 
-		req.response = new Response.ok(quest);
+		req.response = new Response.ok(quests);
   		return next();	
     });
 };
@@ -68,18 +68,18 @@ module.exports.getQuest = function(req, res, next){
 	});
 };
 
-// Called when: 'PUT /quests/{id} HTTP/1.1'
-module.exports.updateQuest = function(req, res, next){
+module.exports.getNewQuests = function(req, res, next){
 
-	var id = req.params.id;
-	
-	Quest.findByIdAndUpdate({_id:id}, req.body, function(err,quest) {
-		if (err) 
-			return next(new Response.error(err.statusCode));
+  var userId = req.params.id;
 
-		req.response = new Response.ok(quest);
-  		return next();	
-	});
+  Quest.find({}, function(err, quests){
+    if (err) 
+      return next(new Response.error(err.statusCode));
+
+    var questAmount = Quest.keys(quests).length;
+    console.log("Anzahl: ", questAmount);
+  });
+
 };
 
 // Called when: 'DELETe /quests/{id} HTTP/1.1'
