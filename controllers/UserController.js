@@ -47,6 +47,8 @@ module.exports.createUser = function (req, res, next) {
   			 req.response = new Response.ok(user);
   			 return next();		
       }); */
+      req.response = new Response.ok(user);
+         return next();   
   }
 };
 
