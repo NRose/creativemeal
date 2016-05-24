@@ -8,9 +8,11 @@ var Promise = require('bluebird');
 // Called when: 'POST /quests HTTP/1.1'
 module.exports.createQuest = function (req, res, next) {
 
-	req.checkBody('name', 'Username must be between 4 and 16 characters.').notEmpty();
-  req.checkBody('description', 'Password must be between 6 and 32 characters.').notEmpty(); 
-  req.checkBody('points', 'No Points given.').notEmpty();
+  console.log("HIIIIIIIIII23432!");
+	
+  req.checkBody('name', 'Name must be a nice one.').notEmpty();
+  req.checkBody('description', 'Description should be impressive.').notEmpty(); 
+  //req.checkBody('points', 'No Points given.').isInt();
 
   	var errors = req.validationErrors();
   	if(errors) {
@@ -18,7 +20,7 @@ module.exports.createQuest = function (req, res, next) {
   	}
   	else {
     	var body = req.body;
-    	console.log(body);
+    	console.log("Body: ", body);
     	var quest = new Quest({
     		name: body.name,
     		description: body.description,
@@ -40,7 +42,7 @@ module.exports.createQuest = function (req, res, next) {
   			 req.response = new Response.ok(quest);
   			 return next();		
 	});
-  }
+  } 
 };
 
 // Called when: 'GET /quests HTTP/1.1'
