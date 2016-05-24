@@ -39,7 +39,7 @@ module.exports.createUser = function (req, res, next) {
         var questAmount = quests.length;
         
       });
-      console.log("Anzahl: ", questAmount);
+     // console.log("Anzahl: ", questAmount);
       /*
       user.save(function(err) {
   			if (err) 
