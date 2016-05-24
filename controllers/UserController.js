@@ -36,17 +36,17 @@ module.exports.createUser = function (req, res, next) {
         if (err) 
           return next(new Response.error(err.statusCode));
 
-        var questAmount = Quest.keys(quests).length;
+        var questAmount = quests.length;
         console.log("Anzahl: ", questAmount);
       });
-
+      /*
       user.save(function(err) {
   			if (err) 
   				return next(new Response.error(err.statusCode));
 
   			 req.response = new Response.ok(user);
   			 return next();		
-      });
+      }); */
   }
 };
 
