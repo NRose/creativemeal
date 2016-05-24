@@ -25,7 +25,6 @@ router.route('/users/:id')
 
 //Quests
 router.route('/quests')
-  .get(QuestController.getAllQuests)
   .post(QuestController.createQuest);
 
 router.route('/quests/:id')
