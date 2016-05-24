@@ -29,7 +29,8 @@ router.route('/quests')
   .post(QuestController.createQuest);
 
 router.route('/quests/:id')
-  .get(QuestController.getQuest);
+  .get(QuestController.getQuest)
+  .delete(QuestController.deleteQuest);
 
 router.route('/users/:id/quests')
   .get(QuestController.getNewQuests);

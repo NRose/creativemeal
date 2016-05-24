@@ -26,11 +26,11 @@ module.exports.createQuest = function (req, res, next) {
     		description: body.description,
         points: body.points,
         property: {
-          fish: body.property.fish,
-          beef: body.property.beef,
-          pork: body.property.pork,
-          hotpot: body.property.hotpot,
-          poultry: body.property.poultry
+          fish: body.property.fish || false,
+          beef: body.property.beef || false,
+          pork: body.property.pork || false,
+          hotpot: body.property.hotpot || false,
+          poultry: body.property.poultry || false
         },
     		deleted: false
     	});

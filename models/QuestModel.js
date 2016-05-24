@@ -20,7 +20,7 @@ db.once('open', function() {
       hotpot: { type: Boolean, default: false },
       poultry: { type: Boolean, default: false }
     },
-    deleted: { type: Boolean, default: '' }
+    deleted: { type: Boolean, default: false }
   });
 
  var Quest = mongoose.model('Quest', QuestSchema);
