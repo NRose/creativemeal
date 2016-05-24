@@ -37,8 +37,9 @@ module.exports.createUser = function (req, res, next) {
           return next(new Response.error(err.statusCode));
 
         var questAmount = quests.length;
-        console.log("Anzahl: ", questAmount);
+        
       });
+      console.log("Anzahl: ", questAmount);
       /*
       user.save(function(err) {
   			if (err) 
