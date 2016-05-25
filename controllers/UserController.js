@@ -29,17 +29,17 @@ module.exports.createUser = function (req, res, next) {
     		deleted: false
     	});
 
-      //get two random quests for the new User
+      var quest1;
+      var quest2;
+
+      var countQuests = Quest.count({}, function(err, result){
+
+         //get two random quests for the new User
       var randomQuest1 = Math.floor(Math.random() * result+1) + 1; 
       var randomQuest2 = Math.floor(Math.random() * result+1) + 1; 
 
       if(randomQuest1 == randomQuest2)
         randomQuest2 = Math.floor(Math.random() * result+1) + 1;         
-
-      var quest1;
-      var quest2;
-/*
-      var countQuests = Quest.count({}, function(err, result){
 
         Quest.find({},{},{skip:randomQuest1, limit:1}, function(err, quest_res){
           if (quest_res){
@@ -47,14 +47,13 @@ module.exports.createUser = function (req, res, next) {
             console.log("ID1: ", quest1 );
           }  
         });
-  /*
+
         Quest.find({},{},{skip:randomQuest2, limit:1}, function(err, quest_res){
           if (quest_res){
             quest2 = quest_res[0]._id;
             console.log("ID1: ", quest2 );
           }  
         });
-    
       });    
 /*
       user.quests.push(quest1);
