@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "floating-ridge-24875.herokuapp.com"
+    "url": "https://github.com/NRose/creativemeal"
   },
   "scripts": {
     "start": "nodemon server.js",
