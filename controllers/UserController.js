@@ -41,17 +41,17 @@ module.exports.createUser = function (req, res, next) {
       if(randomQuest1 == randomQuest2)
         randomQuest2 = Math.floor(Math.random() * result+1) + 1;         
 
-        Quest.find({},{},{skip:randomQuest1, limit:1}, function(err, quest_res){
+        Quest.find({},{},{skip:randomQuest1, limit:1}, function(err, quest1_res){
           if (quest_res){
-            quest1 = quest_res[0]._id;
+            quest1 = quest1_res[0]._id;
             console.log("ID1: ", quest1 );
           }  
         });
 
-        Quest.find({},{},{skip:randomQuest2, limit:1}, function(err, quest_res){
+        Quest.find({},{},{skip:randomQuest2, limit:1}, function(err, quest2_res){
           if (quest_res){
-            quest2 = quest_res[0]._id;
-            console.log("ID1: ", quest2 );
+            quest2 = quest2_res[0]._id;
+            console.log("ID2: ", quest2 );
           }  
         });
       });    
