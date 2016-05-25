@@ -123,16 +123,14 @@ function getOneRandomQuest(){
         Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
               quest = quest_res[0]._id;
-              console.log("ID: ", quest );
-              return quest;
            }
            else {
             console.log(err);
-            return err;
-           }
-              
+           }    
         });
-      });     
+      });   
+      console.log("ID: ", quest );
+      return quest;  
     
 }
 
