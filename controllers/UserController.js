@@ -30,16 +30,19 @@ module.exports.createUser = function (req, res, next) {
     		deleted: false
     	});
     	console.log(user);
+      //get two random quests for the new User
+      var quest1 = getOneRandomQuest();
+      var quest2 = getOneRandomQuest();
 
-      //get Quests for new User
-      Quest.find({}, function(err, quests){
-        if (err) 
-          return next(new Response.error(err.statusCode));
+      //comparing the two quests
+      //if they are equal, get a random Quest again
+      if(_.isEqual(quest1, quest2)){
+        quest2 = getOneRandomQuest();
+      }    
 
-        var questAmount = quests.length;
-        
-      });
-     // console.log("Anzahl: ", questAmount);
+      user.quests.push(quest1);
+      user.quests.push(quest2);  
+
       /*
       user.save(function(err) {
   			if (err) 
@@ -80,7 +83,7 @@ module.exports.getUser = function(req, res, next){
 	});
 };
 
-// Called when: 'GET /users/{id} HTTP/1.1'
+// Called when: 'PUT /users/{id} HTTP/1.1'
 module.exports.updateUser = function(req, res, next){
 	
 	var id = req.params.id;
@@ -94,7 +97,7 @@ module.exports.updateUser = function(req, res, next){
 	});
 };
 
-// Called when: 'GET /users/{id} HTTP/1.1'
+// Called when: 'DELETE /users/{id} HTTP/1.1'
 module.exports.deleteUser = function(req, res, next){
 
 	var id = req.params.id;
@@ -106,6 +109,19 @@ module.exports.deleteUser = function(req, res, next){
   		return next();	
 	});
 };
+
+  //get a Random Quest for new Users
+function getOneRandomQuest(){
+
+      var countQuests = Quest.count();
+
+      var randomQuest = Math.floor(Math.random() * countQuests); 
+
+      var quest = Quest.find().limit(1).skip(randomQuest);
+
+      return quest.ObjectId.valueOf();
+      
+}
 
 
 

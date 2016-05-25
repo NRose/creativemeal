@@ -15,15 +15,18 @@ db.once('open', function() {
     email:  { type: String, default: '' },
     points: { type: Number, default: 0 }, 
     preferences: {
-      fish: { type: Boolean, default: true },
-      beef: { type: Boolean, default: true },
-      pork: { type: Boolean, default: true },
-      hotpot: { type: Boolean, default: true },
-      poultry: { type: Boolean, default: true }
+      fish: { type: Boolean, default: false },
+      beef: { type: Boolean, default: false },
+      pork: { type: Boolean, default: false },
+      hotpot: { type: Boolean, default: false },
+      poultry: { type: Boolean, default: false }
     },
     quests: [{
       type: mongoose.Schema.Types.ObjectId,
-      amount: { type: Number, default: 0 }, 
+      ref: "Quest"
+    }],
+    completedQuests: [{
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Quest"
     }],
     achievements: [{
@@ -37,7 +40,7 @@ db.once('open', function() {
     }],
     created: { type: Date, default: Date.now() },
     verified: { type:Boolean, default: false},
-    deleted: { type: Boolean, default: '' }
+    deleted: { type: Boolean, default: false }
   });
 
  var User = mongoose.model('User', UserSchema);
