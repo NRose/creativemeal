@@ -33,6 +33,7 @@ module.exports.createUser = function (req, res, next) {
 
       //get two random quests for the new User
       var quest1 = getOneRandomQuest();
+      console.log("Quest1ID: ", quest1);
   //    var quest2 = getOneRandomQuest();
 /*
       //comparing the two quests
@@ -116,27 +117,17 @@ function getOneRandomQuest(){
       //console.log("TEST!");
       var countQuests = Quest.count({}, function(err, result){
         
-
         var randomQuest = Math.floor(Math.random() * result+1) + 1; 
-        console.log("count: ", randomQuest);
-    
-        //var questtest;
 
         Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
-              console.log("Quest: ", quest_res);
-              console.log("ID: ", quest_res[0]._id);
+              return quest_res[0]._id;
            }
            else 
-            {
-              console.log(err);
-            }
+              return err;
         });
-        //return quest.ObjectId.valueOf();
       });
       
-      
-      return 1;
       
       
 }
