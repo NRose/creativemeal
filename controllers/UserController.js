@@ -29,11 +29,11 @@ module.exports.createUser = function (req, res, next) {
     		created: Date.now(),
     		deleted: false
     	});
-      /*
+
       //get two random quests for the new User
       var quest1 = getOneRandomQuest();
-      var quest2 = getOneRandomQuest();
-
+  //    var quest2 = getOneRandomQuest();
+/*
       //comparing the two quests
       //if they are equal, get a random Quest again
       if(_.isEqual(quest1, quest2)){
