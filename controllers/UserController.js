@@ -34,6 +34,7 @@ module.exports.createUser = function (req, res, next) {
       //get two random quests for the new User
       var quest1 = getOneRandomQuest();
       console.log("Quest1ID: ", quest1);
+      console.log("Neue Quest ID: ", getOneRandomQuest());
   //    var quest2 = getOneRandomQuest();
 /*
       //comparing the two quests
