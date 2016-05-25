@@ -4,6 +4,7 @@ var User     = require('../models/UserModel').User;
 var Quest = require('../models/QuestModel').Quest;
 var Response    = require('../helper/responseHelper');
 var Promise = require('bluebird');
+var random = require('mongoose-simple-random');
 
 
 // Called when: 'POST /users HTTP/1.1'
