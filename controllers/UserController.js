@@ -123,7 +123,7 @@ function getOneRandomQuest(){
         //var questtest;
 
         Quest.find({skip:randomQuest, limit:1}, function(err, quest_res){
-          if (results){
+          if (quest_res){
               console.log("Beste: ", quest_res);
            }else {console.log(err);}
         });
