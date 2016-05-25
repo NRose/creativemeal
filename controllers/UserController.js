@@ -116,6 +116,8 @@ function getOneRandomQuest(){
       var countQuests = Quest.count({}, function(err, result){
         console.log("Quests: ", result);
       });
+
+      console.log("Count: ", countQuests);
       
       //var randomQuest = Math.floor(Math.random() * countQuests); 
 
