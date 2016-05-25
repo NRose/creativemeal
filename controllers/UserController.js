@@ -113,13 +113,13 @@ module.exports.deleteUser = function(req, res, next){
   //get a Random Quest for new Users
 function getOneRandomQuest(){
       console.log("TEST!");
-      var countQuests = Quest.count();
-      console.log("Quests: ", countQuests);
-      var randomQuest = Math.floor(Math.random() * countQuests); 
+      //var countQuests = Quest.count();
+      //console.log("Quests: ", countQuests);
+      //var randomQuest = Math.floor(Math.random() * countQuests); 
 
-      var quest = Quest.find().limit(1).skip(randomQuest);
-
-      return quest.ObjectId.valueOf();
+      //var quest = Quest.find().limit(1).skip(randomQuest);
+      return 1;
+      //return quest.ObjectId.valueOf();
       
 }
 
