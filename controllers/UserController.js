@@ -47,13 +47,14 @@ module.exports.createUser = function (req, res, next) {
             console.log("ID1: ", quest1 );
           }  
         });
-
+  /*
         Quest.find({},{},{skip:randomQuest2, limit:1}, function(err, quest_res){
           if (quest_res){
             quest2 = quest_res[0]._id;
             console.log("ID1: ", quest2 );
           }  
         });
+    */
       });    
 /*
       user.quests.push(quest1);
