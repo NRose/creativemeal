@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nrose/praxisprojekt"
+    "url": "floating-ridge-24875.herokuapp.com"
   },
   "scripts": {
     "start": "nodemon server.js",
