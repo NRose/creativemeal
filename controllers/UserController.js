@@ -125,7 +125,7 @@ function getOneRandomQuest(){
         Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
               console.log("Quest: ", quest_res);
-              console.log("ID: ", quest_res._id);
+              console.log("ID: ", quest_res[0]._id);
            }
            else 
             {
