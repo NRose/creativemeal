@@ -4,8 +4,6 @@ var User     = require('../models/UserModel').User;
 var Quest = require('../models/QuestModel').Quest;
 var Response    = require('../helper/responseHelper');
 var Promise = require('bluebird');
-var random = require('mongoose-simple-random');
-
 
 // Called when: 'POST /users HTTP/1.1'
 module.exports.createUser = function (req, res, next) {
@@ -32,8 +30,8 @@ module.exports.createUser = function (req, res, next) {
     	});
 
       //get two random quests for the new User
-      var quest1 = getOneRandomQuest();
-      console.log("Quest1ID: ", quest1);
+      //var quest1 = getOneRandomQuest();
+      //console.log("Quest1ID: ", quest1);
       console.log("Neue Quest ID: ", getOneRandomQuest());
   //    var quest2 = getOneRandomQuest();
 /*
@@ -123,14 +121,15 @@ function getOneRandomQuest(){
         Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
               quest = quest_res[0]._id;
+              console.log("ID: ", quest );
+              return quest;  
            }
            else {
             console.log(err);
            }    
         });
       });   
-      console.log("ID: ", quest );
-      return quest;  
+      
     
 }
 
