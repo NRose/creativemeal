@@ -76,7 +76,7 @@ app.use(function (err, req, res, next) {
   if(err) {
     console.log(err.code);
     res.status(err.code || 500);
-    res.send(new Response.error(500, 'Server problems!'));
+    res.send(new Response.error(500, err));
   }
   else {
     // No error occured so we proceed with the actual response \o/
