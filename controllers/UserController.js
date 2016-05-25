@@ -29,6 +29,7 @@ module.exports.createUser = function (req, res, next) {
     		created: Date.now(),
     		deleted: false
     	});
+      /*
       //get two random quests for the new User
       var quest1 = getOneRandomQuest();
       var quest2 = getOneRandomQuest();
