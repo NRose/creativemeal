@@ -118,7 +118,7 @@ function getOneRandomQuest(){
 
         var randomQuest = Math.floor(Math.random() * result) + 1; 
         //console.log("count: ", randomQuest);
-        var quest = Quest.find().skip(randomQuest).limit(1).next();
+        var quest = Quest.find().skip(randomQuest).limit(1);
         console.log("Quest: ", quest.ObjectId.valueOf());
         //return quest.ObjectId.valueOf();
       });
