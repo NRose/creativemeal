@@ -38,7 +38,7 @@ module.exports.createUser = function (req, res, next) {
 
       var quest1;
       var quest2;
-
+/*
       var countQuests = Quest.count({}, function(err, result){
 
         Quest.find({},{},{skip:randomQuest1, limit:1}, function(err, quest_res){
@@ -54,7 +54,7 @@ module.exports.createUser = function (req, res, next) {
             console.log("ID1: ", quest2 );
           }  
         });
-    */
+    
       });    
 /*
       user.quests.push(quest1);
