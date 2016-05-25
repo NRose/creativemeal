@@ -117,10 +117,18 @@ function getOneRandomQuest(){
         
 
         var randomQuest = Math.floor(Math.random() * result) + 1; 
-        //console.log("count: ", randomQuest);
-        var quest = Quest.find().skip(randomQuest).limit(1);
-        //var quest = Quest.findOne({rnd: {$gte: randomQuest}});
-        console.log("QuestALL: ", quest.ObjectID());
+        console.log("count: ", randomQuest);
+        //var quest = Quest.find().skip(randomQuest).limit(-1).next();
+
+        //var questtest;
+
+        Quest.find({skip:randomQuest, limit:1}, function(err, quest_res){
+          if (results){
+              console.log("Beste: ", quest_res);
+           }else {console.log(err);}
+        });
+
+        //console.log("QuestALL: ", quest;
         //console.log("Quest: ", quest.ObjectId.valueOf());
         //return quest.ObjectId.valueOf();
       });
