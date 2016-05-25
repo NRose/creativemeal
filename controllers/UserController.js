@@ -120,8 +120,8 @@ function getOneRandomQuest(){
         //console.log("count: ", randomQuest);
         //var quest = Quest.find().skip(randomQuest).limit(1);
         var quest = Quest.findOne({rnd: {$gte: randomQuest}});
-        console.log("QuestALL: ", quest);
-        console.log("Quest: ", quest.ObjectId.valueOf());
+        console.log("QuestALL: ", quest.ObjectId());
+        //console.log("Quest: ", quest.ObjectId.valueOf());
         //return quest.ObjectId.valueOf();
       });
       
