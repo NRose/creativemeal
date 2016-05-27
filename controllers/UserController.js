@@ -43,24 +43,18 @@ module.exports.createUser = function (req, res, next) {
         .then(function (quest) {
           console.log("NEW QUESTID:", quest);
           user.quests.push(quest);
-          console.log("Hier ist das erste Quest: ",user.quests[0]);
-          req.response = new Response.ok(user);
-          return next(); 
-        })
-        .catch(function (err) {
-          err.code = err.code || undefined;
-          console.log(err);
+          user.save(function(err) {
+            if (err) 
+              return next(new Response.error(err.statusCode));
+
+            req.response = new Response.ok(user);
+            return next();   
+          })
+          .catch(function (err) {
+            err.code = err.code || undefined;
+            console.log(err);
+          });
         });
-
-      /*
-      user.save(function(err) {
-  			if (err) 
-  				return next(new Response.error(err.statusCode));
-
-  			 req.response = new Response.ok(user);
-  			 return next();		
-      }); */
-       
   }
 };
 
