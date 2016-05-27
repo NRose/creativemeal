@@ -45,6 +45,7 @@ module.exports.createUser = function (req, res, next) {
         .then(function (quest) {
           console.log("NEW QUESTID:", quest);
           user.quests.push(quest);
+          console.log(user.quests);
         })
         .catch(function (err) {
           err.code = err.code || undefined;
