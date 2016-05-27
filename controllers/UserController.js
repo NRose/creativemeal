@@ -29,46 +29,27 @@ module.exports.createUser = function (req, res, next) {
     		deleted: false
     	});
 
-
+      var firstQuest;
 
       getOneRandomQuest()
         .then(function (quest) {
           console.log("NEW QUESTID:", quest);
+          user.quests.push(quest);
         })
         .catch(function (err) {
           err.code = err.code || undefined;
           console.log(err);
-  });
-
-      //console.log("QUEST1: ", quest1);
-     // var quest2;
-/*
-      var countQuests = Quest.count({}, function(err, result){
-
-         //get two random quests for the new User
-      var randomQuest1 = Math.floor(Math.random() * result+1) + 1; 
-      var randomQuest2 = Math.floor(Math.random() * result+1) + 1; 
-
-      if(randomQuest1 == randomQuest2)
-        randomQuest2 = Math.floor(Math.random() * result+1) + 1;         
-
-        Quest.find({},{},{skip:randomQuest1, limit:1}, function(err, quest1_res){
-          if (quest_res){
-            quest1 = quest1_res[0]._id;
-            console.log("ID1: ", quest1 );
-          }  
         });
 
-        Quest.find({},{},{skip:randomQuest2, limit:1}, function(err, quest2_res){
-          if (quest_res){
-            quest2 = quest2_res[0]._id;
-            console.log("ID2: ", quest2 );
-          }  
+      getOneRandomQuest()
+        .then(function (quest) {
+          console.log("NEW QUESTID:", quest);
+          user.quests.push(quest);
+        })
+        .catch(function (err) {
+          err.code = err.code || undefined;
+          console.log(err);
         });
-      });    
-/*
-      user.quests.push(quest1);
-      user.quests.push(quest2);  
 
       /*
       user.save(function(err) {
