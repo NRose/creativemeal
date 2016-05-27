@@ -43,7 +43,7 @@ module.exports.createUser = function (req, res, next) {
         .then(function (quest) {
           console.log("NEW QUESTID:", quest);
           user.quests.push(quest);
-          console.log("Hier ist das Quest: ",user.quests);
+          console.log("Hier ist das erste Quest: ",user.quests[0]);
           req.response = new Response.ok(user);
           return next(); 
         })
