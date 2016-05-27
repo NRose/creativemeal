@@ -31,7 +31,6 @@ module.exports.createUser = function (req, res, next) {
 
       getOneRandomQuest()
         .then(function (quest) {
-          console.log("NEW QUESTID:", quest);
           user.quests.push(quest);
         })
         .catch(function (err) {
@@ -41,7 +40,6 @@ module.exports.createUser = function (req, res, next) {
 
       getOneRandomQuest()
         .then(function (quest) {
-          console.log("NEW QUESTID:", quest);
           user.quests.push(quest);
           user.save(function(err) {
             if (err) 
