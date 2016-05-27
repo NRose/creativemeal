@@ -130,22 +130,27 @@ module.exports.deleteUser = function(req, res, next){
 
   //get a Random Quest for new Users
 function getOneRandomQuest(){
+
+  return new Promise(function (resolve, reject) {
       var quest;
       var countQuests = Quest.count({}, function(err, result){
         
         var randomQuest = Math.floor(Math.random() * result+1) + 1; 
 
-       return Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
+        Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
             quest = quest_res[0]._id;
             console.log("ID: ", quest );
+            resolve(quest);
              
           }
           else {
             console.log(err);
+            reject(err);
           }    
         });
-      });   
+      });  
+  }); 
 }
 
 
