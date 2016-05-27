@@ -29,8 +29,6 @@ module.exports.createUser = function (req, res, next) {
     		deleted: false
     	});
 
-      var firstQuest;
-
       getOneRandomQuest()
         .then(function (quest) {
           console.log("NEW QUESTID:", quest);
@@ -46,6 +44,8 @@ module.exports.createUser = function (req, res, next) {
           console.log("NEW QUESTID:", quest);
           user.quests.push(quest);
           console.log("Hier ist das Quest: ",user.quests);
+          req.response = new Response.ok(user);
+          return next(); 
         })
         .catch(function (err) {
           err.code = err.code || undefined;
@@ -60,8 +60,7 @@ module.exports.createUser = function (req, res, next) {
   			 req.response = new Response.ok(user);
   			 return next();		
       }); */
-      req.response = new Response.ok(user);
-         return next();   
+       
   }
 };
 
