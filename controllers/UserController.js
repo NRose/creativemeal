@@ -45,7 +45,7 @@ module.exports.createUser = function (req, res, next) {
         .then(function (quest) {
           console.log("NEW QUESTID:", quest);
           user.quests.push(quest);
-          console.log(user.quests);
+          console.log("Hier ist das Quest: ",user.quests);
         })
         .catch(function (err) {
           err.code = err.code || undefined;
@@ -127,7 +127,6 @@ function getOneRandomQuest(){
       Quest.count({}, function(err, result){
         
         var randomQuest = Math.floor(Math.random() * result) + 1; 
-        console.log("COUNT: ", randomQuest);
         Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
             quest = quest_res[0]._id;
