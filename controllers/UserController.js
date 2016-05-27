@@ -145,11 +145,10 @@ function getOneRandomQuest(){
       Quest.count({}, function(err, result){
         
         var randomQuest = Math.floor(Math.random() * result+1) + 1; 
-
+        console.log("COUNT: ", randomQuest);
         Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
             quest = quest_res[0]._id;
-            console.log("ID: ", quest );
             resolve(quest);
              
           }
