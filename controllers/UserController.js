@@ -31,7 +31,7 @@ module.exports.createUser = function (req, res, next) {
 
       var quest1 = getOneRandomQuest();
 
-      console.log("QUEST1: "quest1);
+      console.log("QUEST1: ", quest1);
       var quest2;
 /*
       var countQuests = Quest.count({}, function(err, result){
