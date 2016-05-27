@@ -29,9 +29,11 @@ module.exports.createUser = function (req, res, next) {
     		deleted: false
     	});
 
-      var quest1;
-      var quest2;
+      var quest1 = getOneRandomQuest();
 
+      console.log("QUEST1: "quest1);
+      var quest2;
+/*
       var countQuests = Quest.count({}, function(err, result){
 
          //get two random quests for the new User
@@ -133,19 +135,17 @@ function getOneRandomQuest(){
         
         var randomQuest = Math.floor(Math.random() * result+1) + 1; 
 
-        Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
+       return Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
             quest = quest_res[0]._id;
             console.log("ID: ", quest );
-            return quest;  
+             
           }
           else {
             console.log(err);
           }    
         });
       });   
-      
-    
 }
 
 
