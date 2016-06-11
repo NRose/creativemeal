@@ -28,13 +28,10 @@ router.route('/quests')
   .get(QuestController.getAllQuests)
   .post(QuestController.createQuest);
 
-/*router.route('/quests/:id')
+router.route('/quests/:id')
   .get(QuestController.getQuest)
   .delete(QuestController.deleteQuest);
 
-router.route('/users/:id/quests')
-  .get(QuestController.getNewQuests);
-*/
 
 // Finally export the router
 module.exports = router;

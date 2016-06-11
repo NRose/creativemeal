@@ -57,7 +57,7 @@ module.exports.getAllQuests = function(req, res, next){
 module.exports.getQuest = function(req, res, next){
 
 	var id = req.params.id;
-	
+  console.log("ID: "+id);	
 	Quest.findOne({_id:id}, '', function(err,quest) {
 		if (err) 
 		 	return next(new Response.error(err.statusCode));
