@@ -18,7 +18,8 @@ module.exports.createGroup = function (req, res, next) {
     	var body = req.body;
     	console.log(body);
     	var group = new Group({
-    		name: body.name
+    		name: body.name,
+    		members: body.members
     	});
     	console.log(group);
     	group.save(function(err) {
