@@ -60,32 +60,5 @@ module.exports.getAchievement = function(req, res, next){
 	});
 };
 
-// Called when: 'PUT /achievements/{id} HTTP/1.1'
-module.exports.updateAchievement = function(req, res, next){
-
-	var id = req.params.id;
-	
-	Achievement.findByIdAndUpdate({_id:id}, req.body, function(err,achievement) {
-		if (err) 
-			return next(new Response.error(err.statusCode));
-
-		req.response = new Response.ok(achievement);
-  		return next();	
-	});
-};
-
-// Called when: 'DELETE /achievements/{id} HTTP/1.1'
-module.exports.deleteAchievement = function(req, res, next){
-
-	var id = req.params.id;
-	Achievement.findByIdAndRemove({_id:id}, '', function(err, achievement){
-		if (err) 
-		 	return next(new Response.error(err.statusCode));
-
-		req.response = new Response.ok(achievement);
-  		return next();	
-	});
-};
-
 
 

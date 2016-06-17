@@ -10,7 +10,11 @@ db.once('open', function() {
 });
 //ggf. Passwort
  const GroupSchema = new Schema({
-    name: { type: String, default: '' }
+    name: { type: String, default: '' },
+    members:[{
+    	type: mongoose.Schema.Types.ObjectId,
+      	ref: "User"
+      }]
   });
 
  var Group = mongoose.model('Group', GroupSchema);
