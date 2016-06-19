@@ -31,7 +31,6 @@ db.once('open', function() {
     }],
     achievements: [{
       type: mongoose.Schema.Types.ObjectId,
-      amount: { type: Number, default: 0 }, 
       ref: "Achievement"
     }],
     group: [{
