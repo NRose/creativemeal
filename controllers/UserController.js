@@ -117,7 +117,7 @@ function getOneRandomQuest(){
       var quest;
       Quest.count({}, function(err, result){
         
-        var randomQuest = Math.floor(Math.random() * result) + 1; 
+        var randomQuest = Math.floor(Math.random() * result); 
         Quest.find({},{},{skip:randomQuest, limit:1}, function(err, quest_res){
           if (quest_res){
             quest = quest_res[0]._id;
