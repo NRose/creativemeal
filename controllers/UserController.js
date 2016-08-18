@@ -9,8 +9,6 @@ var Promise = require('bluebird');
 module.exports.createUser = function (req, res, next) {
   
 	req.checkBody('username', 'Username must be between 4 and 16 characters.').notEmpty();
-  req.checkBody('password', 'Password must be between 6 and 32 characters.').notEmpty(); 
-  req.checkBody('email', 'No valid Email given.').isEmail();
 
     console.log(req.body);
   	var errors = req.validationErrors();
@@ -22,8 +20,6 @@ module.exports.createUser = function (req, res, next) {
     	console.log(body);
     	var user = new User({
     		username: body.username,
-    		password: body.password,
-    		email: body.email,
     		preferences: body.preferences,
     		created: Date.now(),
     		deleted: false

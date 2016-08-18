@@ -11,8 +11,6 @@ db.once('open', function() {
 
  const UserSchema = new Schema({
     username: { type: String, default: '' }, 
-    password: { type: String, default: '' }, 
-    email:  { type: String, default: '' },
     points: { type: Number, default: 0 }, 
     preferences: {
       fish: { type: Boolean, default: false },
