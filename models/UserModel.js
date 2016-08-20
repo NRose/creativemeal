@@ -25,7 +25,8 @@ db.once('open', function() {
     }],
     completedQuests: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Quest"
+      ref: "Quest", 
+      note: {type: String, default: ''}
     }],
     achievements: [{
       type: mongoose.Schema.Types.ObjectId,
